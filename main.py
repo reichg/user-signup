@@ -5,24 +5,22 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 
-
 @app.route("/", methods=['GET', 'POST'])
-def index():
+def login():
+    error = None
     if request.method == 'POST':
-        return render_template('welcome.html')
-         
-    else:
-        return render_template('index.html') 
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'invalid creds'
+        else:
+            return redirect(url_for('welcome'))
+    return render_template('login.html', error=error)
 
 
-@app.route('/welcome')
-def successful_login():
-    if request.form['username'] == request.form['username']:
-        return render_template('welcome.html')
-    else:
-        return redirect(url_for('index'))
+@app.route("/welcome")
+def welcome():
+    return render_template('welcome.html')
 
-
-
+           
+           
 
 app.run(debug=True)
