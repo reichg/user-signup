@@ -18,7 +18,8 @@ def login():
 
 @app.route("/welcome")
 def welcome():
-    return render_template('welcome.html')
+    username = request.form['username']
+    return render_template('welcome.html', username=username)
 
            
            
