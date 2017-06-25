@@ -19,7 +19,8 @@
 				</td>
 				<td>
 					<input name="username" type="text" value>
-					<span class="error"></span>
+					{% if cred_error %}
+					<span class="error">{{cred_error}}</span>{% endif %}
 				</td>
 			</tr>
 			<tr>
@@ -28,7 +29,8 @@
 				</td>
 				<td>
 					<input name="password" type="password" value>
-					<span class="error"></span>
+					{% if pass_error %}
+					<span class="error">{{pass_error}}</span>{% endif %}
 				</td>
 			</tr>
 			<tr>
@@ -46,7 +48,8 @@
 				</td>
 				<td>
 					<input name="email" type="text" value>
-					<span class="error"></span>
+					{% if email_error %}
+					<span class="error">{{email_error}}</span>{% endif %}
 				</td>
 			</tr>
 		</tbody>
